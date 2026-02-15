@@ -9,9 +9,10 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 usage() {
-  echo "Usage: $0 [-r]"
+  echo "Usage: $0 [-r|-t]"
   echo "  no option: deploy to repository root"
   echo "  -r       : deploy to ./release/YYYYMMDD"
+  echo "  -t       : deploy to ./release/YYYYMMDD_HHMM"
 }
 
 if [[ ! -d "$SOURCE_DIR" ]]; then
@@ -35,6 +36,13 @@ if [[ $# -eq 1 ]]; then
       rm -rf "$TARGET_DIR"
       mkdir -p "$TARGET_DIR"
       COMMIT_MSG="$TODAY"
+      ;;
+    -t)
+      TIMESTAMP="$(date +%Y%m%d_%H%M)"
+      TARGET_DIR="./release/$TIMESTAMP"
+      rm -rf "$TARGET_DIR"
+      mkdir -p "$TARGET_DIR"
+      COMMIT_MSG="$TIMESTAMP"
       ;;
     -h|--help)
       usage
