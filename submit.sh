@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Unity WebGL 出力元
-SOURCE_DIR="$HOME/Documents/src/WebGame3/webapp"
+SOURCE_DIR="$HOME/Documents/src/WebGame4/webapp"
 
 # このスクリプトのあるリポジトリを作業ディレクトリにする
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
